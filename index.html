@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>2048</h1>
+            <div class="header-controls">
+                <div class="score-container">
+                    <p>SCORE</p>
+                    <p id="score">0</p>
+                </div>
+                <button id="new-game-button" class="btn">New Game</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-board-container">
+                <div class="grid-container">
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                    <div class="grid"></div>
+                </div>
+                <div id="game-over-message" class="message-overlay" style="display: none;">
+                    <div class="message-content">
+                        <p id="message-text"></p>
+                        <button id="new-game-message-button" class="btn">New Game</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-button" id="move-up">↑</button>
+                <div></div>
+                <button class="control-button" id="move-left">←</button>
+                <button class="control-button" id="move-down">↓</button>
+                <button class="control-button" id="move-right">→</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Use keyboard arrow keys or buttons to play.</p>
+            <p class="instructions">Combine tiles with the same number to reach 2048!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

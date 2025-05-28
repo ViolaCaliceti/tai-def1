@@ -1,0 +1,287 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #faf8ef;
+    color: #776e65;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.score-container {
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    background-color: #bbada0;
+    padding: 10px;
+    border-radius: 6px;
+    aspect-ratio: 1;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.grid {
+    background-color: rgba(238, 228, 218, 0.35);
+    border-radius: 3px;
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.grid::before {
+    content: attr(data-value);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Animazioni per i tile */
+.grid {
+    transition: all 0.15s ease-in-out;
+}
+
+.grid.pop {
+    animation: pop 0.15s ease-in-out;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.grid.merge {
+    animation: merge 0.2s ease-in-out;
+}
+
+@keyframes merge {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Colori dei tile con transizione */
+.tile-2, .tile-4, .tile-8, .tile-16, .tile-32, .tile-64, 
+.tile-128, .tile-256, .tile-512, .tile-1024, .tile-2048 {
+    transition: background-color 0.15s ease-in-out;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+.control-button {
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #8f7a66;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #7f6a56;
+}
+
+/* Tile colors */
+.tile-2 { background-color: #eee4da; }
+.tile-4 { background-color: #ede0c8; }
+.tile-8 { background-color: #f2b179; color: white; }
+.tile-16 { background-color: #f59563; color: white; }
+.tile-32 { background-color: #f67c5f; color: white; }
+.tile-64 { background-color: #f65e3b; color: white; }
+.tile-128 { background-color: #edcf72; color: white; }
+.tile-256 { background-color: #edcc61; color: white; }
+.tile-512 { background-color: #edc850; color: white; }
+.tile-1024 { background-color: #edc53f; color: white; }
+.tile-2048 { background-color: #edc22e; color: white; }
+
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-content {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.message-content {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.message-content p {
+    font-size: 20px; /* Adjusted font size */
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #776e65;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px; /* Adjusted gap */
+    width: 100%;
+    max-width: 240px; /* Adjusted max-width */
+    margin-bottom: 20px;
+}
+
+.control-button {
+    background-color: #bbada0; /* Consistent button color */
+    color: #f9f6f2;
+    padding: 15px; /* Adjusted padding */
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 20px; /* Adjusted font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control-button:hover {
+    background-color: #9e8c7f; /* Darker shade for hover */
+}
+.control-button:active {
+    background-color: #776e65; /* Even darker for active */
+}
+
+/* Position control buttons in a D-pad like layout */
+.controls button:nth-child(1) { grid-column: 2; grid-row: 1; } /* Up */
+.controls div:nth-child(2) { display: none; } /* Placeholder, not needed */
+.controls button:nth-child(3) { grid-column: 1; grid-row: 2; } /* Left */
+.controls button:nth-child(4) { grid-column: 2; grid-row: 2; } /* Down */
+.controls button:nth-child(5) { grid-column: 3; grid-row: 2; } /* Right */
+
+
+footer {
+    text-align: center;
+    margin-top: 10px; /* Adjusted margin */
+    font-size: 14px;
+}
+
+footer .instructions {
+    font-size: 12px;
+    color: #a3998f; /* Lighter color for instructions */
+    margin-top: 5px;
+}
+
+/* Animations */
+@keyframes pop-in {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slide-merged { /* Simple scale for merge, more complex would need JS position tracking */
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.animate-pop-in {
+    animation: pop-in 0.3s ease-out;
+}
+
+.animate-merge { /* Applied to the tile that results from a merge */
+    animation: slide-merged 0.2s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 36px;
+    }
+    .score-container {
+        padding: 8px 15px;
+    }
+    .score-container p#score {
+        font-size: 20px;
+    }
+    .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+    .grid-container {
+        gap: 8px;
+        padding: 8px;
+    }
+    .tile {
+        font-size: 20px; /* Adjust base for smaller tiles */
+    }
+    .tile.font-size-large { font-size: 22px; }
+    .tile.font-size-medium { font-size: 18px; }
+    .tile.font-size-small { font-size: 16px; }
+
+    .controls {
+        max-width: 200px;
+        gap: 6px;
+    }
+    .control-button {
+        padding: 12px;
+        font-size: 18px;
+    }
+    .message-content p {
+        font-size: 18px;
+    }
+}
